@@ -466,12 +466,22 @@ CustomHealthAPI.Helper.HookFunctions.AddCollectible = function(player, item, cha
 		pdata.HasLeviathanTransformation = player:HasPlayerForm(PlayerForm.PLAYERFORM_EVIL_ANGEL)
 	end
 	
+	if not REPENTANCE_PLUS then 
 	CustomHealthAPI.PersistentData.OverriddenFunctions.AddCollectible(player, 
 	                                                                  item, 
 	                                                                  charge or 0, 
 	                                                                  firstTimePickingUp or firstTimePickingUp == nil, 
 	                                                                  slot or ActiveSlot.SLOT_PRIMARY, 
 	                                                                  varData or 0)
+																	  else
+		CustomHealthAPI.PersistentData.OverriddenFunctions.AddCollectible(player, 
+	                                                                  item, 
+	                                                                  charge or 0, 
+	                                                                  firstTimePickingUp or firstTimePickingUp == nil, 
+	                                                                  slot or ActiveSlot.SLOT_PRIMARY, 
+	                                                                  varData or 0, -1)															  
+																	  end
+	--Tyrone fucking sucks dude
 	
 	if CustomHealthAPI then
 		if not CustomHealthAPI.Helper.PlayerIsIgnored(player) and firstTimePickingUp then
